@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+    datasource:
+        name: test
+        url: jdbc:mysql://127.0.0.1:3306/activitiDemo?useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: root
+        password: 123456
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+    activiti:
+        # 最初为true 后面改为false
+        database-schema-update: false
+
+mybatis:
+  mapper-locations: classpath:com/dxy/mapper/*.xml
+  type-aliases-package: com.dxy.dto

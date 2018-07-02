@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dxy.mapper.ApplicantMapper" >
+    <resultMap id="BaseResultMap" type="com.dxy.dto.ApplicantDto" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, name, email, phone_number
+    </sql>
+
+    <insert id="insert">
+        insert into APPLICANT (name, email, phone_number)
+        values (#{applicantDto.name}, #{applicantDto.email},
+        #{applicantDto.phoneNumber})
+    </insert>
+
+
+    <select id="selectAllApplicant" resultType="com.dxy.dto.ApplicantDto">
+        select
+        <include refid="Base_Column_List" />
+        from APPLICANT
+    </select>
+</mapper>
