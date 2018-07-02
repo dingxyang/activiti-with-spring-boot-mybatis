@@ -10,7 +10,9 @@ import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,18 @@ public class ActivitiWithMybatisApplicationTests {
 	private ApplicantMapper applicantMapper;
 
 	private Wiser wiser;
+
+	@Before
+	public void setup() {
+		wiser = new Wiser();
+		wiser.setPort(1025);
+		wiser.start();
+	}
+
+	@After
+	public void cleanup() {
+		wiser.stop();
+	}
 
 
 	@Test
